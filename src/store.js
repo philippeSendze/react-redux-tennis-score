@@ -9,17 +9,6 @@ const initialState = {
   playing: true,
 };
 
-// actions creators
-
-const playPause = () => ({ type: "playPause" });
-
-const restartGame = () => ({ type: "restart" });
-
-const pointScored = (player) => ({
-  type: "pointScored",
-  payload: { player: player },
-});
-
 function reducer(state = initialState, action) {
   if (action.type === "restart") {
     return initialState;
@@ -54,11 +43,11 @@ function reducer(state = initialState, action) {
     }
     if (currentPlayerScore === 40) {
       if (state[otherPlayer] !== 40) {
-        // Le joueur à gagné
+        // Le joueur a gagné
         return { ...state, winner: player };
       }
       if (state.advantage === player) {
-        // Le joueur à gagné
+        // Le joueur a gagné
         return { ...state, winner: player };
       }
       if (state.advantage === null) {
@@ -72,4 +61,4 @@ function reducer(state = initialState, action) {
   return state;
 }
 
-const store = createStore(reducer);
+export const store = createStore(reducer);
