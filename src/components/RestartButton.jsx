@@ -10,7 +10,7 @@ export default function RestartButton() {
         dispatch({ type: "restart" });
       }}
     >
-      Remettre à zéro
+      Recommencer
     </button>
   );
 }
