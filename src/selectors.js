@@ -1,5 +1,3 @@
-import { useSelector } from "react-redux";
-
 export const selectPlayerWithAdvantage = (player) => {
   return (state) => state.advantage === player;
 };

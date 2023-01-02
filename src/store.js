@@ -7,7 +7,8 @@ const initialState = {
   player2: 0,
   advantage: null,
   winner: null,
-  playing: true,
+  // Le jeu est en pause à l'initialisation
+  playing: false,
   history: [],
 };
 
@@ -26,15 +27,15 @@ function reducer(state = initialState, action) {
       draft.player2 = 0;
       draft.advantage = null;
       draft.winner = null;
-      draft.playing = true;
+      draft.playing = false;
     });
   }
-  if (action.type === "playPause") {
+  if (action.type === "setPlaying") {
     if (state.winner) {
       return state;
     }
     return produce(state, (draft) => {
-      draft.playing = !draft.playing;
+      draft.playing = action.payload;
     });
   }
   if (action.type === "pointScored") {
